@@ -5,8 +5,6 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,8 +13,6 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,14 +21,9 @@ import com.ckz.thought.utils.BitmapUtils;
 import com.ckz.thought.utils.MusicUtils;
 import com.ckz.thought.utils.TimerUtils;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Timer;
-import java.util.TimerTask;
 
 /**
  * Created by kaiser on 2015/10/27.
@@ -54,7 +45,7 @@ import java.util.TimerTask;
  *
  *
  */
-public class MemoryActivity extends AppCompatActivity {
+public class MemoryActivity extends BaseActivity {
 
     private static final String TAG = MemoryActivity.class.getSimpleName();
     private ImageView iv_back;//当前背景图

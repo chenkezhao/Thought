@@ -7,7 +7,14 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/MyAppTheme">
+        android:theme="@style/AppTheme">
+
+        <meta-data
+            android:name="design_width"
+            android:value="1080"></meta-data>
+        <meta-data
+            android:name="design_height"
+            android:value="1920"></meta-data>
 
         <activity android:name=".app.MainActivity">
             <intent-filter>

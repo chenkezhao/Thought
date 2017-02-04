@@ -1,17 +1,20 @@
 <resources>
-
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light">
+    <style name="BaseAppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimary">@color/colorPrimaryDefault</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textColorPrimary">@color/colorTextPrimary</item>
+        <item name="android:textColorSecondary">@color/colorTextSecondary</item>
     </style>
+    <style name="AppTheme" parent="BaseAppTheme">
+    </style>
+
     <!--v7全屏无标题栏-->
     <style name="MyAppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowFullscreen">true</item>
     </style>
-
     <!--文字阴影-->
     <style name="AudioFileInfoOverlayText">
         <item name="android:paddingLeft">4px</item>
@@ -22,5 +25,4 @@
         <item name="android:shadowDy">3</item>
         <item name="android:shadowRadius">3</item>
     </style>
-
 </resources>

@@ -5,7 +5,6 @@ import android.animation.ObjectAnimator;
 import android.os.Bundle;
 import android.support.v4.internal.view.SupportMenuItem;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -20,7 +19,7 @@ import com.ckz.thought.R;
  * 菜单三
  * 提升你脑子的记忆力
  */
-public class ReactionActivity extends AppCompatActivity{
+public class ReactionActivity extends BaseActivity{
 
     private ImageView im;
     @Override

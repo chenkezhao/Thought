@@ -1,121 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/home"
-    >
+    android:layout_height="match_parent">
 
-    <LinearLayout
+    <com.zhy.autolayout.AutoLinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:context=".app.MainActivity">
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical">
 
-        <TextView
-            style="@style/AudioFileInfoOverlayText"
+        <Button
+            android:id="@+id/btn_arithmetic"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:gravity="center"
-            android:text="@string/app_home_welcomes_1"
-            android:textColor="@color/app_text_tip"
-            android:textSize="15sp"
-            />
+            android:text="趣味算法" />
 
-        <TextView
-            style="@style/AudioFileInfoOverlayText"
+        <Button
+            android:id="@+id/btn_memory"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:gravity="center"
-            android:text="@string/app_home_welcomes_2"
-            android:textColor="@color/app_text_tip"
-            android:textSize="15sp"
-            />
+            android:text="超强记忆" />
 
-        <ImageView
-            android:id="@+id/app_main_menu_1"
-            android:clickable="true"
-            android:layout_width="200dp"
-            android:layout_height="100dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="30dp"/>
-        <TextView
-            style="@style/AudioFileInfoOverlayText"
+        <Button
+            android:id="@+id/btn_reaction"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/app_home_menu1"
-            android:textColor="#ffffff"
-            android:gravity="center"
-            android:textSize="20sp" />
-
-
-        <ImageView
-            android:id="@+id/app_main_menu_2"
-            android:clickable="true"
-            android:layout_width="200dp"
-            android:layout_height="100dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"/>
-        <TextView
-            style="@style/AudioFileInfoOverlayText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/app_home_menu2"
-            android:textColor="#ffffff"
-            android:gravity="center"
-            android:textSize="20sp" />
-
-        <ImageView
-            android:id="@+id/app_main_menu_3"
-            android:clickable="true"
-            android:layout_width="200dp"
-            android:layout_height="100dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"/>
-        <TextView
-            style="@style/AudioFileInfoOverlayText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/app_home_menu3"
-            android:textColor="#ffffff"
-            android:gravity="center"
-            android:textSize="20sp" />
-
-
-
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:orientation="vertical">
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="@string/app_home_copyright"
-                    android:textColor="@color/app_text_tip1"
-                    android:textSize="14sp"/>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:gravity="center"
-                    android:text="@string/app_home_email"
-                    android:textColor="@color/app_text_tip1"
-                    android:textSize="14sp"/>
-            </LinearLayout>
-            <ImageView
-                android:id="@+id/app_main_mute"
-                android:layout_marginTop="30dp"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_gravity="right"/>
-        </FrameLayout>
-    </LinearLayout>
-</ScrollView>
+            android:text="超级反应" />
+    </com.zhy.autolayout.AutoLinearLayout>
+    <TextView
+        android:id="@+id/tv_copyrightInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:text="版权信息"
+        android:layout_marginBottom="24px"/>
+</com.zhy.autolayout.AutoRelativeLayout>

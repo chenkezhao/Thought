@@ -10,6 +10,9 @@
     <option name="pathToConfigFileJava" value="$PROJECT_DIR$/../../../Android/StudioSetting/Eclipse formatter self.xml" />
     <option name="selectedJavaProfile" value="Eclipse formatter self" />
   </component>
+  <component name="EntryPointsManager">
+    <entry_points version="2.0" />
+  </component>
   <component name="NullableNotNullManager">
     <option name="myDefaultNullable" value="android.support.annotation.Nullable" />
     <option name="myDefaultNotNull" value="android.support.annotation.NonNull" />

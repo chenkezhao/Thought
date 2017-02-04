@@ -5,7 +5,6 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
@@ -13,8 +12,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ckz.thought.R;
-import com.ckz.thought.utils.MusicUtils;
 import com.ckz.thought.utils.BitmapUtils;
+import com.ckz.thought.utils.MusicUtils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -47,7 +46,7 @@ import java.util.TimerTask;
  *  即不为0，但在第二次按下这个数字图片按钮时，这个数字图片按钮就表示为0；
  *  11.其中有对大图片(Bitmap)进行压缩处理，使其占内存变小，以便提高程序性能；
  */
-public class GoActivity extends AppCompatActivity{
+public class GoActivity extends BaseActivity{
 
     private Resources res;
     //位图处理工具类
