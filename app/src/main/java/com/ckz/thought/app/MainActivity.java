@@ -41,11 +41,11 @@ public class MainActivity extends BaseActivity {
 
     /**
      * 跳转到算法页面
-     * @param v
+     * @param view
      */
     @Event(R.id.btn_arithmetic)
     private void goToArithmeticClick(View view){
-        Intent intent = new Intent(MainActivity.this,GoActivity.class);
+        Intent intent = new Intent(MainActivity.this,ArithmeticActivity.class);
         startActivity(intent);
     }
 

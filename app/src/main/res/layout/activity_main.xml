@@ -13,7 +13,7 @@
             android:id="@+id/btn_arithmetic"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="趣味算法" />
+            android:text="趣味口算" />
 
         <Button
             android:id="@+id/btn_memory"

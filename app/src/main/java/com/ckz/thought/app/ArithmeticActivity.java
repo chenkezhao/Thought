@@ -46,14 +46,14 @@ import java.util.TimerTask;
  *  即不为0，但在第二次按下这个数字图片按钮时，这个数字图片按钮就表示为0；
  *  11.其中有对大图片(Bitmap)进行压缩处理，使其占内存变小，以便提高程序性能；
  */
-public class GoActivity extends BaseActivity{
+public class ArithmeticActivity extends BaseActivity{
 
     private Resources res;
     //位图处理工具类
     private BitmapUtils bitmapUtils;
     //音效播放服务
     private MusicUtils musicUtils;
-    private final String TAG = GoActivity.class.getSimpleName();
+    private final String TAG = ArithmeticActivity.class.getSimpleName();
     private int[][] btns;//九宫格按钮资源ID集合
     private int[][] drawId;//按钮资源ID
     private int[][] drawId_1;
@@ -95,8 +95,8 @@ public class GoActivity extends BaseActivity{
             switch (msg.what){
                 case TIMEOUT:
                     //游戏超时
-                    musicUtils.gameOverMusic(GoActivity.this);
-                    Toast.makeText(GoActivity.this, "NoNoNo ＠︿＠ 超时 "+setTimeOut+" 秒", Toast.LENGTH_SHORT).show();
+                    musicUtils.gameOverMusic(ArithmeticActivity.this);
+                    Toast.makeText(ArithmeticActivity.this, "NoNoNo ＠︿＠ 超时 "+setTimeOut+" 秒", Toast.LENGTH_SHORT).show();
                     timeOut++;
                     count++;
                     score--;
@@ -119,7 +119,7 @@ public class GoActivity extends BaseActivity{
         }
     };
 
-    public  GoActivity(){
+    public ArithmeticActivity(){
         super();
     }
 
@@ -172,7 +172,7 @@ public class GoActivity extends BaseActivity{
             switch (v.getId()){
                 case R.id.tvFormula :
                     //游戏通关音效
-                    musicUtils.gameNextMusic(GoActivity.this);
+                    musicUtils.gameNextMusic(ArithmeticActivity.this);
                     //创建运算公式
                     String formula = createFormula();
                     tvFormula.setText(formula);
@@ -180,7 +180,7 @@ public class GoActivity extends BaseActivity{
                     btnClickResult=null;//设置为null，让垃圾回收机制回收
                     //清空记录
                     recordInput.setText("");
-                    Toast.makeText(GoActivity.this, "清空了记录的结果！", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ArithmeticActivity.this, "清空了记录的结果！", Toast.LENGTH_SHORT).show();
                     break;
                 default:
                     break;
@@ -203,7 +203,7 @@ public class GoActivity extends BaseActivity{
                         //保存单击的数字，不为空，0生效
                         if(btnClickResult!=null){
                             //按钮音效
-                            musicUtils.gameBtnMusic(GoActivity.this);
+                            musicUtils.gameBtnMusic(ArithmeticActivity.this);
                             //时间器-开始计时
                             setTimeout(setTimeOut);
                             btnClickResult.add(0);//记录0
@@ -221,14 +221,14 @@ public class GoActivity extends BaseActivity{
                         break;
                     case R.id.tvShowHelp ://显示结果帮助事件
                         //?音效
-                        musicUtils.gameQuestionMusic(GoActivity.this);
+                        musicUtils.gameQuestionMusic(ArithmeticActivity.this);
                         String tempResult = String.valueOf(result);
                         if(tempResult.length()>2){
                             tempResult = "...";
                         }
                         tvShowHelp.setText(tempResult);
                         tvShowHelp.setBackground(null);
-                        Toast.makeText(GoActivity.this, "◎＿◎ 你想干嘛", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ArithmeticActivity.this, "◎＿◎ 你想干嘛", Toast.LENGTH_SHORT).show();
                         break;
                     default://九宫格按钮事件
 
@@ -236,7 +236,7 @@ public class GoActivity extends BaseActivity{
                         setTimeout(setTimeOut);
 
                         //按钮音效
-                        musicUtils.gameBtnMusic(GoActivity.this);
+                        musicUtils.gameBtnMusic(ArithmeticActivity.this);
                         int id = v.getId();
                         int length = btns.length;
                         for(int i=0;i<length;i++){
@@ -257,7 +257,7 @@ public class GoActivity extends BaseActivity{
                                         break;
                                     }
                                 }
-                                //Toast.makeText(GoActivity.this, "当前按钮代表数字为："+(flag+1), Toast.LENGTH_SHORT).show();
+                                //Toast.makeText(ArithmeticActivity.this, "当前按钮代表数字为："+(flag+1), Toast.LENGTH_SHORT).show();
                                 //保存单击的数字
                                 if(btnClickResult==null){
                                     btnClickResult = new ArrayList<Integer>();
@@ -298,7 +298,7 @@ public class GoActivity extends BaseActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_go);
+        setContentView(R.layout.activity_arithmetic);
 
         res = getResources();
         //activity创建背景音效
@@ -537,7 +537,7 @@ public class GoActivity extends BaseActivity{
         String message ="";
         if(result==Integer.parseInt(resultStr)){
             //通关音效
-            musicUtils.gameNextMusic(GoActivity.this);
+            musicUtils.gameNextMusic(ArithmeticActivity.this);
             //答案与结果一致
             rFlag = true;
             message = "Very Good，←︿←";
@@ -545,7 +545,7 @@ public class GoActivity extends BaseActivity{
             count++;//记录操作次数
         }else if(Integer.parseInt(resultStr)>result){
             //game over背景音乐
-            musicUtils.gameOverMusic(GoActivity.this);
+            musicUtils.gameOverMusic(ArithmeticActivity.this);
             //答案不一致，并记录值超出正确结果长度
             rFlag = true;
             message = "呵呵 ↓◎＿◎↓ 大于正确结果";
@@ -555,7 +555,7 @@ public class GoActivity extends BaseActivity{
         if(rFlag){
             //取消计时器
             clearTimeout();
-            Toast.makeText(GoActivity.this, message, Toast.LENGTH_SHORT).show();
+            Toast.makeText(ArithmeticActivity.this, message, Toast.LENGTH_SHORT).show();
             //洗牌
             shuffleAll();
             //创建公式
