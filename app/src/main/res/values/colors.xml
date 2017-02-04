@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="home">#ffffff</color>
+    <color name="app_text">#000000</color>
+    <color name="app_text_tip">#666666</color>
+    <color name="app_text_tip1">#c7c7c7</color>
+
+
+    <color name="btn_go_one">#6A686A</color>
+    <color name="btn_go_two">#A80237</color>
+    <color name="btn_go_three">#35A23F</color>
+    <color name="btn_go_four">#B46C1A</color>
+    <color name="btn_go_five">#A8058A</color>
+    <color name="btn_go_six">#29AE88</color>
+    <color name="btn_go_seven">#E2E2E2</color>
+    <color name="btn_go_eight">#E8E37B</color>
+    <color name="btn_go_nine">#37A1A9</color>
+    <color name="btn_go_zero">#000000</color>
+</resources>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<translate xmlns:android="http://schemas.android.com/apk/res/android"
+    android:duration="3000"
+    android:fromXDelta="0"
+    android:toXDelta="500"
+    android:fromYDelta="0"
+    android:toYDelta="500"
+    android:interpolator="@android:anim/cycle_interpolator"
+    android:repeatCount="infinite" >
+    <!-- fromXDelta\toXDelta：位移的开始点和终止点 -->
+</translate>

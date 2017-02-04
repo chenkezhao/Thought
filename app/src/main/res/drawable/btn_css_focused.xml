@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--带阴影效果的Button-->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:bottom="4.0dip" android:right="4.0dip">
+        <shape>
+            <solid android:color="#8fc4e1"/>
+            <corners android:radius="10dip"/>
+            <!-- padding：Button里面的文字与Button边界的间隔 -->
+            <padding android:bottom="10dp" android:left="10dp" android:right="10dp" android:top="10dp" />
+        </shape>
+    </item>
+</selector>

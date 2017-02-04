@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+
+Tween动画(补间动画)，通过对View的内容进行一系列的图形变换 (包括平移、缩放、旋转、改变透明度)来实现动画效果。动画效果的定义可以采用XML来做也可以采用编码来做。Tween动画有4种类型：
+
+动画的类型
+
+Xml定义动画使用的配置节点 编码定义动画使用的类 渐变透明度动画效果
+
+
+AlphaAnimation 渐变尺寸缩放动画效果
+
+
+ScaleAnimation 画面位置移动动画效果
+
+
+TranslateAnimation 画面旋转动画效果
+
+RotateAnimation
+
+我们可以为每一个动画设置动画插入器，Android自带的几种动画插入器：
+
+AccelerateInterpolator 加速，开始时慢中间加速
+
+DecelerateInterpolator 减速，开始时快然后减速
+
+AccelerateDecelerateInterolator 先加速后减速，开始结束时慢，中间加速
+
+AnticipateInterpolator 反向，先向相反方向改变一段再加速播放
+
+AnticipateOvershootInterpolator 反向加超越，先向相反方向改变，再加速播放，会超出目的值然后缓慢移动至目的值
+
+BounceInterpolator 跳跃，快到目的值时值会跳跃，如目的值100，后面的值可能依次为85，77，70，80，90，100
+
+CycleIinterpolator 循环，动画循环一定次数，值的改变为一正弦函数：Math.sin(2* mCycles* Math.PI* input)
+
+LinearInterpolator 线性，线性均匀改变
+
+OvershottInterpolator 超越，最后超出目的值然后缓慢改变到目的值
+-->
+<!--渐变透明度动画效果  AlphaAnimation-->
+<set xmlns:android="http://schemas.android.com/apk/res/android"
+    android:interpolator="@android:anim/accelerate_interpolator">
+    <alpha
+        android:duration="3000"
+        android:fillAfter="true"
+        android:fromAlpha="1.0"
+        android:repeatCount="2"
+        android:toAlpha="0.1" />
+</set>

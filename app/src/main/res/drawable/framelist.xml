@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--Frame动画，即顺序播放事先做好的图像，跟放胶片电影类似-->
+<animation-list
+    android:oneshot="false"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/btn_gray" android:duration="50"/>
+    <item android:drawable="@drawable/btn_watchet" android:duration="50"/>
+    <item android:drawable="@drawable/btn_khaki" android:duration="50"/>
+    <item android:drawable="@drawable/btn_green" android:duration="50"/>
+    <item android:drawable="@drawable/btn_red" android:duration="50"/>
+    <item android:drawable="@drawable/btn_yellow" android:duration="50"/>
+</animation-list>

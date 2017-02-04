@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">NaoZi的脑</string>
+    <string name="app_home_welcomes_1">NaoZi的脑</string>
+    <string name="app_home_welcomes_2">脑子的集中训练营，带我飞、带我装B</string>
+    <string name="app_home_copyright">Copyright@陈科肇</string>
+    <string name="app_home_email">Email:310771881@qq.com</string>
+    <string name="app_home_menu1">●＿¤单细胞</string>
+    <string name="app_home_menu2">进阶</string>
+    <string name="app_home_menu3">§外星人§</string>
+    <string name="app_go_squaredUp">操作说明：数字对应按钮</string>
+    <string name="app_go_equal">=</string>
+</resources>
