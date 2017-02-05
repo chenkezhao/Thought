@@ -2,18 +2,20 @@ package com.ckz.thought.app;
 
 import android.content.res.Resources;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ckz.thought.R;
 import com.ckz.thought.utils.BitmapUtils;
 import com.ckz.thought.utils.MusicUtils;
+import com.facebook.drawee.backends.pipeline.Fresco;
+import com.facebook.drawee.view.SimpleDraweeView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -59,8 +61,8 @@ public class ArithmeticActivity extends BaseActivity{
     private int[][] drawId_1;
     private int[][] btnColors;//按钮颜色集合
     private int temp = 0;//记录九宫格按钮按下的位置
-    private ImageView btn;
-    private ImageView imageView;
+    private SimpleDraweeView btn;
+    private SimpleDraweeView imageView;
     private TextView tvFormula;//显示公式的文本框
     private Bitmap bitmap;//九宫格数字位图
     //随机公式创建
@@ -85,7 +87,7 @@ public class ArithmeticActivity extends BaseActivity{
     private final int TIMEOUT =1;
 
     //数字0按钮
-    private ImageView zeroBtn;
+    private SimpleDraweeView zeroBtn;
 
     private Bitmap[] bitmaps;//记录下bitmap，便于回收
 
@@ -240,12 +242,14 @@ public class ArithmeticActivity extends BaseActivity{
                         int id = v.getId();
                         int length = btns.length;
                         for(int i=0;i<length;i++){
-                            btn = (ImageView) findViewById(btns[i][1]);
+                            btn = (SimpleDraweeView) findViewById(btns[i][1]);
                             if(btn.getId()==id){
                                 //对应事件
                                 temp=i;
                                 //btn.setBackground(getResources().getDrawable(drawId_1[i][1]));
-                                btn.setImageBitmap(bitmapUtils.compressBitmapFromResource(res,drawId_1[i][1],btn));
+//                                btn.setImageBitmap(bitmapUtils.compressBitmapFromResource(res,drawId_1[i][1],btn));
+                                Uri uri = Uri.parse("res:///"+drawId_1[i][1]);
+                                btn.setImageURI(uri);
                                 //找到对应的数字
                                 int num = drawId[i][0];
                                 int flag = 0;
@@ -285,9 +289,13 @@ public class ArithmeticActivity extends BaseActivity{
                         tvShowHelp.setText("");
                         tvShowHelp.setBackground(getResources().getDrawable(R.drawable.question));
                         break;
+                    case R.id.textNumber:
+                        break;
                     default://九宫格按钮事件
                         //btn.setBackground(getResources().getDrawable(drawId[temp][1]));
-                        btn.setImageBitmap(bitmapUtils.compressBitmapFromResource(res,drawId[temp][1],btn));
+//                        btn.setImageBitmap(bitmapUtils.compressBitmapFromResource(res,drawId[temp][1],btn));
+                        Uri uri = Uri.parse("res:///"+drawId[temp][1]);
+                        btn.setImageURI(uri);
                         break;
                 }
             }
@@ -309,7 +317,7 @@ public class ArithmeticActivity extends BaseActivity{
         bitmapUtils=new BitmapUtils();
 
         //数字0事件
-        zeroBtn = (ImageView) findViewById(R.id.textNumber);
+        zeroBtn = (SimpleDraweeView) findViewById(R.id.textNumber);
         //初始化资源
         app_go_score = (TextView) findViewById(R.id.app_go_score);
         app_go_count = (TextView) findViewById(R.id.app_go_count);
@@ -320,7 +328,7 @@ public class ArithmeticActivity extends BaseActivity{
         app_go_timeOut.setText("超时："+timeOut+" 次");
         tvShowHelp = (TextView) findViewById(R.id.tvShowHelp);
         recordInput = (TextView) findViewById(R.id.recordInput);
-        imageView = (ImageView) findViewById(R.id.textNumber);
+        imageView = (SimpleDraweeView) findViewById(R.id.textNumber);
         tvFormula  = (TextView) findViewById(R.id.tvFormula);
         //获取按钮对应的图片资源ID
         drawId =new int[][]{
@@ -438,10 +446,12 @@ public class ArithmeticActivity extends BaseActivity{
         int length = btns.length;
         bitmaps = new Bitmap[length];
         for(int i=0;i<length;i++){
-            ImageView btn = (ImageView) findViewById(btns[i][1]);
+            SimpleDraweeView btn = (SimpleDraweeView) findViewById(btns[i][1]);
             //btn.setBackground(getResources().getDrawable(list.get(i)[1]));
-            bitmaps[i]=bitmapUtils.compressBitmapFromResource(res,list.get(i)[1],btn);
-            btn.setImageBitmap(bitmaps[i]);
+//            bitmaps[i]=bitmapUtils.compressBitmapFromResource(res,list.get(i)[1],btn);
+//            btn.setImageBitmap(bitmaps[i]);
+            Uri uri = Uri.parse("res:///"+list.get(i)[1]);
+            btn.setImageURI(uri);
         }
     }
 
@@ -451,7 +461,7 @@ public class ArithmeticActivity extends BaseActivity{
      * @param bitmap 要处理的图片对象
      * @param imageView 要显示处理后的图片的ImageView
      */
-    private void shuffleNum(int[][] btnColors,Bitmap bitmap,ImageView imageView){
+    private void shuffleNum(int[][] btnColors,Bitmap bitmap,SimpleDraweeView imageView){
 
         //打乱数字颜色显示顺序
         List<int[]> list = Arrays.asList(btnColors);
@@ -540,7 +550,8 @@ public class ArithmeticActivity extends BaseActivity{
             musicUtils.gameNextMusic(ArithmeticActivity.this);
             //答案与结果一致
             rFlag = true;
-            message = "Very Good，←︿←";
+//            message = "Very Good，←︿←";
+            message = null;
             score++;//加一分
             count++;//记录操作次数
         }else if(Integer.parseInt(resultStr)>result){
@@ -555,7 +566,9 @@ public class ArithmeticActivity extends BaseActivity{
         if(rFlag){
             //取消计时器
             clearTimeout();
-            Toast.makeText(ArithmeticActivity.this, message, Toast.LENGTH_SHORT).show();
+            if(message!=null){
+                Toast.makeText(ArithmeticActivity.this, message, Toast.LENGTH_SHORT).show();
+            }
             //洗牌
             shuffleAll();
             //创建公式
@@ -586,7 +599,12 @@ public class ArithmeticActivity extends BaseActivity{
         super.onDestroy();
         clearTimeout();
         //回收bitmap
-        bitmapUtils.recycleBitmaps(bitmaps);
+//        bitmapUtils.recycleBitmaps(bitmaps);
+
+        //清除缓存
+        Fresco.getImagePipeline().clearCaches();
+        Fresco.getImagePipeline().clearMemoryCaches();
+        Fresco.getImagePipeline().clearDiskCaches();
     }
 
 

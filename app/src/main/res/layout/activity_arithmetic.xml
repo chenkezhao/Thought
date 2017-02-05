@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.zhy.autolayout.AutoLinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco = "http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
@@ -18,7 +20,7 @@
             android:textSize="50sp"
             android:clickable="true"
             android:gravity="center"/>
-        <ImageView
+        <com.facebook.drawee.view.SimpleDraweeView
             style="@style/AudioFileInfoOverlayText"
             android:layout_width="wrap_content"
             android:layout_height="220px"
@@ -45,26 +47,35 @@
             android:layout_height="270px"
             android:layout_marginTop="20px"
             android:orientation="horizontal">
-            <ImageView
+            <com.facebook.drawee.view.SimpleDraweeView
                 android:id="@+id/btnI_1"
+                android:gravity="center"
                 android:clickable="true"
                 android:layout_width="270px"
                 android:layout_height="270px"
                 android:layout_marginLeft="34px"
+                fresco:actualImageScaleType="fitCenter"
+                android:scaleType="fitCenter"
                 />
-            <ImageView
+            <com.facebook.drawee.view.SimpleDraweeView
                 android:id="@+id/btnI_2"
                 android:clickable="true"
+                android:gravity="center"
                 android:layout_width="270px"
                 android:layout_height="270px"
                 android:layout_marginLeft="95px"
+                fresco:actualImageScaleType="fitCenter"
+                android:scaleType="fitCenter"
                 />
-            <ImageView
+            <com.facebook.drawee.view.SimpleDraweeView
                 android:id="@+id/btnI_3"
                 android:clickable="true"
+                android:gravity="center"
                 android:layout_width="270px"
                 android:layout_height="270px"
                 android:layout_marginLeft="100px"
+                fresco:actualImageScaleType="fitCenter"
+                android:scaleType="fitCenter"
                 />
         </com.zhy.autolayout.AutoLinearLayout>
 
@@ -73,25 +84,35 @@
             android:layout_height="270px"
             android:layout_marginTop="50px"
             android:orientation="horizontal">
-            <ImageView
+            <com.facebook.drawee.view.SimpleDraweeView
                 android:id="@+id/btnI_4"
                 android:clickable="true"
+                android:gravity="center"
                 android:layout_width="270px"
                 android:layout_height="270px"
                 android:layout_marginLeft="34px"
+                fresco:actualImageScaleType="fitCenter"
+                android:scaleType="fitCenter"
                 />
-            <ImageView
+            <com.facebook.drawee.view.SimpleDraweeView
                 android:id="@+id/btnI_5"
                 android:clickable="true"
+                android:gravity="center"
                 android:layout_width="270px"
                 android:layout_height="270px"
                 android:layout_marginLeft="95px"
+                fresco:actualImageScaleType="fitCenter"
+                android:scaleType="fitCenter"
                 />
-            <ImageView
+            <com.facebook.drawee.view.SimpleDraweeView
                 android:id="@+id/btnI_6"
+                android:clickable="true"
+                android:gravity="center"
                 android:layout_width="270px"
                 android:layout_height="270px"
                 android:layout_marginLeft="100px"
+                fresco:actualImageScaleType="fitCenter"
+                android:scaleType="fitCenter"
                 />
         </com.zhy.autolayout.AutoLinearLayout>
 
@@ -101,27 +122,36 @@
             android:layout_marginTop="50px"
             android:orientation="horizontal">
 
-            <ImageView
+            <com.facebook.drawee.view.SimpleDraweeView
                 android:id="@+id/btnI_7"
                 android:clickable="true"
+                android:gravity="center"
                 android:layout_width="270px"
                 android:layout_height="270px"
                 android:layout_marginLeft="34px"
+                fresco:actualImageScaleType="fitCenter"
+                android:scaleType="fitCenter"
                 />
 
-            <ImageView
+            <com.facebook.drawee.view.SimpleDraweeView
                 android:id="@+id/btnI_8"
                 android:clickable="true"
+                android:gravity="center"
                 android:layout_width="270px"
                 android:layout_height="270px"
                 android:layout_marginLeft="95px"
+                fresco:actualImageScaleType="fitCenter"
+                android:scaleType="fitCenter"
                 />
-            <ImageView
+            <com.facebook.drawee.view.SimpleDraweeView
                 android:id="@+id/btnI_9"
                 android:clickable="true"
+                android:gravity="center"
                 android:layout_width="270px"
                 android:layout_height="270px"
                 android:layout_marginLeft="100px"
+                fresco:actualImageScaleType="fitCenter"
+                android:scaleType="fitCenter"
                 />
         </com.zhy.autolayout.AutoLinearLayout>
     </com.zhy.autolayout.AutoLinearLayout>
@@ -168,8 +198,12 @@
             android:textSize="10sp"
             android:textColor="#ff0000"/>
     </com.zhy.autolayout.AutoLinearLayout>
-    <ImageView
+    <com.facebook.drawee.view.SimpleDraweeView
         android:id="@+id/textNumber"
+        android:clickable="true"
+        android:gravity="center"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        fresco:actualImageScaleType="fitXY"
+        android:scaleType="fitXY"/>
 </com.zhy.autolayout.AutoLinearLayout>

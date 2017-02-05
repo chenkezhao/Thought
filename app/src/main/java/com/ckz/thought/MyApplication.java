@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 
+import com.facebook.drawee.backends.pipeline.Fresco;
+
 import org.xutils.x;
 
 import java.io.File;
@@ -30,6 +32,7 @@ public class MyApplication extends Application {
 		this.instance = MyApplication.this;
 		x.Ext.init(this);
 //		x.Ext.setDebug(BuildConfig.DEBUG); // 是否输出debug日志, 开启debug会影响性能.
+		Fresco.initialize(this);
 	}
 
 	/**
