@@ -33,7 +33,7 @@ public class PreferenceUtils {
     public boolean isPlayArithmeticMusic(){
         boolean isPlay = true;
         if (prefs != null) {
-            isPlay = prefs.getBoolean("cb_arithmetic_music", true);
+            isPlay = prefs.getBoolean("cb_arithmetic_music", false);
         }
         return isPlay;
     }
