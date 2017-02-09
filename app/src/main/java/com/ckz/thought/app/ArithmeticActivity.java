@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.ckz.thought.R;
 import com.ckz.thought.utils.BitmapUtils;
 import com.ckz.thought.utils.MusicUtils;
+import com.ckz.thought.utils.PreferenceUtils;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.drawee.view.SimpleDraweeView;
 
@@ -79,7 +80,7 @@ public class ArithmeticActivity extends BaseActivity{
     private int count = 0;//操作次数
     private TextView app_go_score;//获取分数记录控件
     private TextView app_go_count;//获取操作次数控件
-    private int setTimeOut = 5;//设置超时时间，单位秒(S)
+    private int setTimeOut = 0;//设置超时时间，单位秒(S)
     private int timeOut = 0;
     private TextView app_go_timeOut;//获取超时显示控件
     //提醒任务
@@ -308,6 +309,7 @@ public class ArithmeticActivity extends BaseActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_arithmetic);
 
+        timeOut = PreferenceUtils.getInstance().getArithmeticTimeout();
         res = getResources();
         //activity创建背景音效
         //gameBackMusic();

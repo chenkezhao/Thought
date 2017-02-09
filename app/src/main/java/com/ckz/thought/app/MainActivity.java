@@ -3,6 +3,9 @@ package com.ckz.thought.app;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
@@ -67,6 +70,27 @@ public class MainActivity extends BaseActivity {
     private void goToReactionClick(View view){
         Intent intent = new Intent(MainActivity.this,ReactionActivity.class);
         startActivity(intent);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.menu_main,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.main_setting:
+                startActivity(new Intent(MainActivity.this,SettingActivity.class));
+                break;
+            case R.id.main_help:
+                break;
+            default:
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
 

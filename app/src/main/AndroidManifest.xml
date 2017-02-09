@@ -24,15 +24,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".app.ArithmeticActivity">
-            <intent-filter>
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
         <activity android:name=".app.MemoryActivity">
-            <intent-filter>
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
         <activity
@@ -40,10 +34,8 @@
             android:theme="@style/AppTheme"
             android:icon="@android:drawable/ic_menu_help"
             android:label="actionbar">
-            <intent-filter>
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
+        <activity android:name=".app.SettingActivity"></activity>
     </application>
 
 </manifest>
