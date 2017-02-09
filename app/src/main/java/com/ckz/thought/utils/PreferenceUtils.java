@@ -41,7 +41,7 @@ public class PreferenceUtils {
     public int getArithmeticTimeout(){
         int timeout =5;
         if(prefs!=null){
-            timeout = prefs.getInt("et_arithmetic_timeout",5);
+            timeout = Integer.parseInt(prefs.getString("et_arithmetic_timeout","5"));
         }
         return timeout;
     }

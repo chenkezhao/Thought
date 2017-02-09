@@ -92,6 +92,11 @@ public class ArithmeticActivity extends BaseActivity{
 
     private Bitmap[] bitmaps;//记录下bitmap，便于回收
 
+
+    //倒计时
+    private int countDown = 0;
+    private Timer countDownTimer;
+
     //消息处理机制
     private final Handler myHandler = new Handler() {
         public void handleMessage(Message msg) {
@@ -105,7 +110,7 @@ public class ArithmeticActivity extends BaseActivity{
                     score--;
                     app_go_count.setText("次数：" + count);
                     app_go_score.setText("分数："+score);
-                    app_go_timeOut.setText("超时："+timeOut+" 次");
+                    app_go_timeOut.setText("已超时(倒计时"+setTimeOut+"秒)："+timeOut+" 次");
                     //创建运算公式
                     String formula = createFormula();
                     tvFormula.setText(formula);
@@ -150,6 +155,22 @@ public class ArithmeticActivity extends BaseActivity{
             timer = new Timer();
             timer.schedule(new RemindTask(), seconds*1000);
         }
+        //倒计时
+        countDown = setTimeOut;
+        if(countDownTimer==null){
+            countDownTimer = new Timer();
+            countDownTimer.schedule(new TimerTask(){
+                @Override
+                public void run() {
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            app_go_timeOut.setText("已超时(倒计时"+(countDown--)+"秒)："+timeOut+" 次");
+                        }
+                    });
+                }
+            }, 0, 1000);
+        }
 
     }
 
@@ -161,6 +182,11 @@ public class ArithmeticActivity extends BaseActivity{
             timer.cancel();
             timer.purge();
             timer=null;
+        }
+        if(countDownTimer!=null){
+            countDownTimer.cancel();
+            countDownTimer.purge();
+            countDownTimer=null;
         }
     }
 
@@ -309,7 +335,7 @@ public class ArithmeticActivity extends BaseActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_arithmetic);
 
-        timeOut = PreferenceUtils.getInstance().getArithmeticTimeout();
+        setTimeOut = PreferenceUtils.getInstance().getArithmeticTimeout();
         res = getResources();
         //activity创建背景音效
         //gameBackMusic();
@@ -327,7 +353,7 @@ public class ArithmeticActivity extends BaseActivity{
         //显示记录数据
         app_go_count.setText("次数："+count);
         app_go_score.setText("分数："+score);
-        app_go_timeOut.setText("超时："+timeOut+" 次");
+        app_go_timeOut.setText("已超时(倒计时"+setTimeOut+"秒)："+timeOut+" 次");
         tvShowHelp = (TextView) findViewById(R.id.tvShowHelp);
         recordInput = (TextView) findViewById(R.id.recordInput);
         imageView = (SimpleDraweeView) findViewById(R.id.textNumber);
@@ -543,7 +569,7 @@ public class ArithmeticActivity extends BaseActivity{
         String resultStr = "";
         for(int r=0;r<result_l;r++){
             resultStr+=btnClickResult.get(r);
-            recordInput.setText("操作记录："+resultStr);
+            recordInput.setText(resultStr);
         }
         boolean rFlag = false;//是否洗牌标记
         String message ="";
@@ -585,7 +611,7 @@ public class ArithmeticActivity extends BaseActivity{
             //显示记录数据
             app_go_count.setText("次数："+count);
             app_go_score.setText("分数："+score);
-            app_go_timeOut.setText("超时("+setTimeOut+"秒)："+timeOut+" 次");
+            app_go_timeOut.setText("已超时(倒计时"+setTimeOut+"秒)："+timeOut+" 次");
         }
     }
 
