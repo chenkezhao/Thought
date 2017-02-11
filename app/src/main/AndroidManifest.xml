@@ -36,6 +36,7 @@
             android:label="actionbar">
         </activity>
         <activity android:name=".app.SettingActivity"></activity>
+        <activity android:name=".app.HelpActivity"></activity>
     </application>
 
 </manifest>

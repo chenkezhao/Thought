@@ -86,6 +86,7 @@ public class MainActivity extends BaseActivity {
                 startActivity(new Intent(MainActivity.this,SettingActivity.class));
                 break;
             case R.id.main_help:
+                startActivity(new Intent(MainActivity.this,HelpActivity.class));
                 break;
             default:
                 break;
