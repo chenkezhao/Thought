@@ -297,7 +297,7 @@ public class MemoryActivity extends BaseActivity {
                 res.getColor(R.color.btn_go_nine),
                 res.getColor(R.color.btn_go_zero)
         };
-        bitmaps = bitmapUtils.getSquaredUpNum(this, R.drawable.app_go_number,btnColors);
+        bitmaps = bitmapUtils.getSquaredUpNum(this, R.mipmap.app_go_number,btnColors);
 
         btn_memory_go = (Button) findViewById(R.id.btn_memory_go);
 
@@ -326,7 +326,7 @@ public class MemoryActivity extends BaseActivity {
 
         app_memory_rank = (TextView) findViewById(R.id.app_memory_rank);
         //欢迎页面
-        iv_back.setBackground(res.getDrawable(R.drawable.back1));
+        iv_back.setBackground(res.getDrawable(R.mipmap.back));
     }
 
     @Override

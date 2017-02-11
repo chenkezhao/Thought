@@ -309,13 +309,13 @@ public class ArithmeticActivity extends BaseActivity{
             if(event.getAction() == MotionEvent.ACTION_UP){
                 switch (v.getId()) {
                     case R.id.tvFormula://显示公式文本框事件
-                        tvFormula.setBackground(getResources().getDrawable(R.drawable.tv_dialog));
+                        tvFormula.setBackground(getResources().getDrawable(R.mipmap.tv_dialog));
                         tvShowHelp.setText("");
-                        tvShowHelp.setBackground(getResources().getDrawable(R.drawable.question));
+                        tvShowHelp.setBackground(getResources().getDrawable(R.mipmap.question));
                         break;
                     case R.id.tvShowHelp://显示结果帮助事件
                         tvShowHelp.setText("");
-                        tvShowHelp.setBackground(getResources().getDrawable(R.drawable.question));
+                        tvShowHelp.setBackground(getResources().getDrawable(R.mipmap.question));
                         break;
                     case R.id.textNumber:
                         break;
@@ -362,26 +362,26 @@ public class ArithmeticActivity extends BaseActivity{
         tvFormula  = (TextView) findViewById(R.id.tvFormula);
         //获取按钮对应的图片资源ID
         drawId =new int[][]{
-                {1,R.drawable.btn_gray},
-                {2,R.drawable.btn_red},
-                {3,R.drawable.btn_green},
-                {4,R.drawable.btn_khaki},
-                {5,R.drawable.btn_violet},
-                {6,R.drawable.btn_blue_green},
-                {7,R.drawable.btn_white},
-                {8,R.drawable.btn_yellow},
-                {9,R.drawable.btn_watchet}
+                {1,R.mipmap.btn_gray},
+                {2,R.mipmap.btn_red},
+                {3,R.mipmap.btn_green},
+                {4,R.mipmap.btn_khaki},
+                {5,R.mipmap.btn_violet},
+                {6,R.mipmap.btn_blue_green},
+                {7,R.mipmap.btn_white},
+                {8,R.mipmap.btn_yellow},
+                {9,R.mipmap.btn_watchet}
         };
         drawId_1 =new int[][]{
-                {1,R.drawable.btn_gray_1},
-                {2,R.drawable.btn_red_1},
-                {3,R.drawable.btn_green_1},
-                {4,R.drawable.btn_khaki_1},
-                {5,R.drawable.btn_violet_1},
-                {6,R.drawable.btn_blue_green_1},
-                {7,R.drawable.btn_white_1},
-                {8,R.drawable.btn_yellow_1},
-                {9,R.drawable.btn_watchet_1}
+                {1,R.mipmap.btn_gray_1},
+                {2,R.mipmap.btn_red_1},
+                {3,R.mipmap.btn_green_1},
+                {4,R.mipmap.btn_khaki_1},
+                {5,R.mipmap.btn_violet_1},
+                {6,R.mipmap.btn_blue_green_1},
+                {7,R.mipmap.btn_white_1},
+                {8,R.mipmap.btn_yellow_1},
+                {9,R.mipmap.btn_watchet_1}
         };
         //获取按钮对应的资源ID
         btns = new int[][]{
@@ -397,7 +397,7 @@ public class ArithmeticActivity extends BaseActivity{
         };
 
         //app_go_number
-        bitmap = bitmapUtils.getMutableBitmap(getResources(),R.drawable.app_go_number);
+        bitmap = bitmapUtils.getMutableBitmap(getResources(),R.mipmap.app_go_number);
         //九宫格按钮颜色数组
         btnColors = new int[][]{
                 {1,getResources().getColor(R.color.btn_go_one)},
@@ -612,7 +612,7 @@ public class ArithmeticActivity extends BaseActivity{
             recordInput.setText("");
             //清空帮助
             tvShowHelp.setText("");
-            tvShowHelp.setBackground(getResources().getDrawable(R.drawable.question));
+            tvShowHelp.setBackground(getResources().getDrawable(R.mipmap.question));
             //显示记录数据
             app_go_count.setText("次数："+count);
             app_go_score.setText("分数："+score);

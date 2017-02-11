@@ -15,7 +15,7 @@
             android:layout_width="700px"
             android:layout_height="220px"
             android:layout_gravity="center_horizontal"
-            android:background="@drawable/tv_dialog"
+            android:background="@mipmap/tv_dialog"
             android:textColor="@color/app_text_tip"
             android:textSize="50sp"
             android:clickable="true"
@@ -26,7 +26,7 @@
             android:layout_height="220px"
             android:textColor="@color/abc_input_method_navigation_guard"
             android:gravity="bottom"
-            android:background="@drawable/equal"
+            android:background="@mipmap/equal"
             />
         <TextView
             android:id="@+id/tvShowHelp"
@@ -35,13 +35,13 @@
             android:layout_height="220px"
             android:gravity="bottom"
             android:textSize="50sp"
-            android:background="@drawable/question"/>
+            android:background="@mipmap/question"/>
     </com.zhy.autolayout.AutoLinearLayout>
     <com.zhy.autolayout.AutoLinearLayout
         android:layout_width="match_parent"
         android:layout_height="1000px"
         android:orientation="vertical"
-        android:background="@drawable/panel">
+        android:background="@mipmap/panel">
         <com.zhy.autolayout.AutoLinearLayout
             android:layout_width="match_parent"
             android:layout_height="270px"

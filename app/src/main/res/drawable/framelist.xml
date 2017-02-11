@@ -3,10 +3,10 @@
 <animation-list
     android:oneshot="false"
     xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:drawable="@drawable/btn_gray" android:duration="50"/>
-    <item android:drawable="@drawable/btn_watchet" android:duration="50"/>
-    <item android:drawable="@drawable/btn_khaki" android:duration="50"/>
-    <item android:drawable="@drawable/btn_green" android:duration="50"/>
-    <item android:drawable="@drawable/btn_red" android:duration="50"/>
-    <item android:drawable="@drawable/btn_yellow" android:duration="50"/>
+    <item android:drawable="@mipmap/btn_gray" android:duration="50"/>
+    <item android:drawable="@mipmap/btn_watchet" android:duration="50"/>
+    <item android:drawable="@mipmap/btn_khaki" android:duration="50"/>
+    <item android:drawable="@mipmap/btn_green" android:duration="50"/>
+    <item android:drawable="@mipmap/btn_red" android:duration="50"/>
+    <item android:drawable="@mipmap/btn_yellow" android:duration="50"/>
 </animation-list>

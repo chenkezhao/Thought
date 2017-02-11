@@ -102,13 +102,6 @@ public class MusicUtils {
     public void gameBtnMusic2(Context context){
         doStart(context, R.raw.btn_click1, false);
     }
-
-    /**
-     * activity启动音效1
-     */
-    public void gameBackMusic(Context context){
-        doStart(context, R.raw.back_go_start, false);
-    }
     /**
      * activity启动音效2
      */
