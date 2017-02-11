@@ -45,4 +45,11 @@ public class PreferenceUtils {
         }
         return timeout;
     }
+    public int getArithmeticComplexity(){
+        int number =1;
+        if(prefs!=null){
+            number = Integer.parseInt(prefs.getString("et_arithmetic_complexity","1"));
+        }
+        return number;
+    }
 }

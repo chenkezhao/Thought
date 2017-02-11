@@ -71,7 +71,7 @@ public class ArithmeticActivity extends BaseActivity{
     private int numberOne = 0;
     private int numberTwo = 0;
     private int result = 0;
-    private int numMax = 20;
+    private int number = 1;
     private List<Integer> btnClickResult;//保存输入的结果值
     //private static int resultLength=5;//保存记录结果的最大长度
     private TextView recordInput;//记录输入的结果
@@ -209,7 +209,8 @@ public class ArithmeticActivity extends BaseActivity{
                     btnClickResult=null;//设置为null，让垃圾回收机制回收
                     //清空记录
                     recordInput.setText("");
-                    Toast.makeText(ArithmeticActivity.this, "清空了记录的结果！", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(ArithmeticActivity.this, "清空了记录的结果！", Toast.LENGTH_SHORT).show();
+                    shuffleAll();
                     break;
                 default:
                     break;
@@ -334,8 +335,9 @@ public class ArithmeticActivity extends BaseActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_arithmetic);
-
+        setTitle("趣味口算");
         setTimeOut = PreferenceUtils.getInstance().getArithmeticTimeout();
+        number = PreferenceUtils.getInstance().getArithmeticComplexity();
         res = getResources();
         //activity创建背景音效
         //gameBackMusic();
@@ -530,8 +532,8 @@ public class ArithmeticActivity extends BaseActivity{
         List<String> list = Arrays.asList(operations);
         Collections.shuffle(list);
         String operation =list.get(0);
-        numberOne = randomInteger(numMax);
-        numberTwo = randomInteger(numMax);
+        numberOne = randomInteger();
+        numberTwo = randomInteger();
         if(numberOne<numberTwo && "-".equals(operation)){
             int temp =numberOne;
             numberOne = numberTwo;
@@ -554,11 +556,14 @@ public class ArithmeticActivity extends BaseActivity{
 
     /**
      * 返回一个指定最大数内的一个随机整数
-     * @param max
      * @return
      */
-    private int randomInteger(int max){
-        return new Random().nextInt(max);
+    private int randomInteger(){
+        String max="";
+        for(int i=0;i<number;i++){
+            max+="9";
+        }
+        return new Random().nextInt(Integer.parseInt(max));
     }
 
     /**
