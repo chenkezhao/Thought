@@ -153,7 +153,7 @@ public class ArithmeticActivity extends BaseActivity{
     public void setTimeout(int seconds) {
         if(timer==null){
             timer = new Timer();
-            timer.schedule(new RemindTask(), seconds*1000);
+            timer.schedule(new RemindTask(),0, seconds*1000);
         }
         //倒计时
         countDown = setTimeOut;
@@ -638,6 +638,8 @@ public class ArithmeticActivity extends BaseActivity{
         Fresco.getImagePipeline().clearCaches();
         Fresco.getImagePipeline().clearMemoryCaches();
         Fresco.getImagePipeline().clearDiskCaches();
+
+        musicUtils.doStop();
     }
 
 
