@@ -22,6 +22,9 @@ import com.ckz.thought.utils.MessageUtils;
 public class SettingActivity extends PreferenceActivity {
 	private EditTextPreference etp_timeout;
 	private EditTextPreference etp_complexity;
+	private EditTextPreference etp_mem_timeout;
+	private EditTextPreference etp_mem_lenght;
+	private EditTextPreference etp_mem_preview;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -74,6 +77,64 @@ public class SettingActivity extends PreferenceActivity {
 					return false;
 				}else {
 					etp_complexity.setSummary(newValue+"");
+				}
+				return true;
+			}
+		});
+
+
+		etp_mem_timeout = (EditTextPreference) findPreference("et_memory_timeout");
+		etp_mem_timeout.setSummary(etp_mem_timeout.getText());
+		etp_mem_timeout.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+
+			@Override
+			public boolean onPreferenceChange(Preference preference,
+											  Object newValue) {
+
+				if("0".equals(newValue+"") || "".equals(newValue+"")){
+					Toast.makeText(SettingActivity.this,"不能设置为0或空",Toast.LENGTH_SHORT).show();
+					return false;
+				}else {
+					etp_mem_timeout.setSummary(newValue+"");
+				}
+				return true;
+			}
+		});
+		etp_mem_lenght = (EditTextPreference) findPreference("et_memory_length");
+		etp_mem_lenght.setSummary(etp_mem_lenght.getText());
+		etp_mem_lenght.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+
+			@Override
+			public boolean onPreferenceChange(Preference preference,
+											  Object newValue) {
+				if("0".equals(newValue+"") || "".equals(newValue+"")){
+					Toast.makeText(SettingActivity.this,"不能设置为0或空",Toast.LENGTH_SHORT).show();
+					return false;
+				}else {
+					int len = Integer.parseInt(newValue+"");
+					if(len>0 && len<=10){
+						etp_mem_lenght.setSummary(newValue+"");
+					}else{
+						Toast.makeText(SettingActivity.this,"超出范围（值:1-10）",Toast.LENGTH_SHORT).show();
+						return false;
+					}
+				}
+				return true;
+			}
+		});
+		etp_mem_preview = (EditTextPreference) findPreference("et_memory_preview");
+		etp_mem_preview.setSummary(etp_mem_preview.getText());
+		etp_mem_preview.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+
+			@Override
+			public boolean onPreferenceChange(Preference preference,
+											  Object newValue) {
+
+				if("0".equals(newValue+"") || "".equals(newValue+"")){
+					Toast.makeText(SettingActivity.this,"不能设置为0或空",Toast.LENGTH_SHORT).show();
+					return false;
+				}else {
+					etp_mem_preview.setSummary(newValue+"");
 				}
 				return true;
 			}

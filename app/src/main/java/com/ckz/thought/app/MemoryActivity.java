@@ -19,11 +19,14 @@ import android.widget.Toast;
 import com.ckz.thought.R;
 import com.ckz.thought.utils.BitmapUtils;
 import com.ckz.thought.utils.MusicUtils;
+import com.ckz.thought.utils.PreferenceUtils;
 import com.ckz.thought.utils.TimerUtils;
 
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * Created by kaiser on 2015/10/27.
@@ -54,15 +57,18 @@ public class MemoryActivity extends BaseActivity {
     private BitmapUtils bitmapUtils;//位图处理工具类
     private List<Map<String, Object>> bitmaps;//获取0~9数字的位图数组
     private int count = 0;
-    private int setCount = 4;//设置显示多少个数字
+    private int setCount = 0;//设置显示多少个数字
     //九宫格按钮颜色数组
     int[] btnColors;
     //提醒任务
     private TimerUtils timerUtils;//记录触发时间
     private TimerUtils timerTime;//记录秒
-    private int setTimeout = 3;
+    private int setTimeout = 0;
+    private Timer countDownTimer;
+    private int countDown = 0;//倒计时记录
+    private final int PCOUNTDOWN = 5;//倒计时处理
     private final int TIMEOUT = 1;//超时处理
-    private final int LOOP=2;//循环处理
+    private final int PREVIEW=2;//预览
     private final int BTNLISTENER=3;//是否完全获取按钮集合
     private final int GETRESULT=4;//是否完全装载结果
     private int second  = 1;//记录秒
@@ -106,20 +112,20 @@ public class MemoryActivity extends BaseActivity {
                     oCount++;//次数
                     refurbishRecord();
                     timerUtils.clearTimeout();
-                    Toast.makeText(MemoryActivity.this, "超时了("+setTimeout+"秒)  ◎＿◎", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(MemoryActivity.this, "超时了("+setTimeout+"秒)  ◎＿◎", Toast.LENGTH_SHORT).show();
                     //重新开始
                     //洗牌
                     refreshNumbers(setCount, true);
                     //计时
-                    timerTime.setTimeout(0, second, LOOP);
+                    timerTime.setTimeout(0, second, PREVIEW);
                     break;
-                case LOOP ://循环处理
-                    int s = setTimeout;
+                case PREVIEW ://循环处理
+                    int s = PreferenceUtils.getInstance().getMemoryPreviewTime();
                     //btn_memory_end.setClickable(false);
                     if(second>s){
                         second = second-s;
                     }
-                    btn_memory_end.setText("开始倒计时："+(s-second));
+                    btn_memory_end.setText("点击跳过预览:"+(s-second));
                     second++;
                     if ((second-1)==s){
                         refreshNumbers(bitmaps.size(), false);
@@ -176,6 +182,34 @@ public class MemoryActivity extends BaseActivity {
                 }else{//按钮事件
                     if(timerUtils.getTimer()==null){
                         timerUtils.setTimeout(setTimeout,TIMEOUT);//记录超时
+                        //倒计时秒
+                        if(countDownTimer==null){
+                            countDownTimer = new Timer();
+                            countDownTimer.schedule(new TimerTask(){
+                                @Override
+                                public void run() {
+                                    runOnUiThread(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            if(timerUtils.getTimer()!=null){
+                                                if(countDown<=0){
+                                                    countDown=setTimeout;
+                                                }
+                                                app_memory_timeOut.setText("已超时("+(--countDown)+"秒):"+oTimeout+"次");
+                                            }else {
+                                                if (countDownTimer != null) {
+                                                    countDownTimer.cancel();
+                                                    countDownTimer.purge();
+                                                    countDownTimer = null;
+                                                }
+                                                countDown=setTimeout;
+                                                app_memory_timeOut.setText("已超时("+setTimeout+"秒):"+oTimeout+"次");
+                                            }
+                                        }
+                                    });
+                                }
+                            }, 1000, 1000);
+                        }
                     }
                     musicUtils.gameBtnMusic2(MemoryActivity.this);
                     int length = btns.length;
@@ -196,7 +230,7 @@ public class MemoryActivity extends BaseActivity {
                                 b= true;
                                 //失败
                                 musicUtils.gameOverMusic2(MemoryActivity.this);
-                                Toast.makeText(MemoryActivity.this, "回家练练吧  ◎＿◎", Toast.LENGTH_SHORT).show();
+                                //Toast.makeText(MemoryActivity.this, "回家练练吧  ◎＿◎", Toast.LENGTH_SHORT).show();
                                 score--;//减分
                             }
                             if(b){
@@ -206,7 +240,7 @@ public class MemoryActivity extends BaseActivity {
                                 //洗牌
                                 refreshNumbers(setCount, true);
                                 //计时
-                                timerTime.setTimeout(0,second,LOOP);
+                                timerTime.setTimeout(0,second,PREVIEW);
                                 refurbishRecord();
                             }
                         }
@@ -230,7 +264,7 @@ public class MemoryActivity extends BaseActivity {
     private void  refurbishRecord(){
         app_memory_count.setText("次数：" + oCount);
         app_memory_score.setText("分数："+score);
-        app_memory_timeOut.setText("超时："+oTimeout);
+        app_memory_timeOut.setText("已超时("+countDown+"秒):"+oTimeout+"次");
     }
 
     /**
@@ -246,7 +280,7 @@ public class MemoryActivity extends BaseActivity {
                     iv_back.setBackground(null);
                     btn_memory_go.setText("");
                     //开始游戏
-                    timerTime.setTimeout(0,second,LOOP);
+                    timerTime.setTimeout(0,second,PREVIEW);
                     refreshNumbers(setCount, true);
                     //改变按钮属性
                     btn_memory_go.setId(R.id.btn_memory_end);
@@ -280,6 +314,9 @@ public class MemoryActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_memory);
+        setCount = PreferenceUtils.getInstance().getMemoryLength();
+        setTimeout = PreferenceUtils.getInstance().getMemoryTimeout();
+        countDown = setTimeout;
         iv_back = (ImageView) findViewById(R.id.iv_back);
         gridView = (GridView) findViewById(R.id.gridView);
         bitmapUtils = new BitmapUtils();
@@ -358,28 +395,16 @@ public class MemoryActivity extends BaseActivity {
             String rank = "";
             //等级设置
             if(score>=50){
-                count = 9;
-                setTimeout=4;
                 rank="小样5+";
             }else if(score>=30){
-                count = 6;
-                setTimeout=3;
                 rank="小样4";
             }else if(score>=20){
-                count = 5;
-                setTimeout=3;
                 rank="小样3";
             }else if(score>=10){
-                count = 4;
-                setTimeout=2;
                 rank="小样2";
             }else if(score>=3){
-                count = 5;
-                setTimeout=2;
                 rank="小样1";
             }else{//乳化
-                count = 4;
-                setTimeout=3;
                 rank="小样0";
             }
 

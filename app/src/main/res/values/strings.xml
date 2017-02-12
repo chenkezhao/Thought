@@ -7,6 +7,6 @@
     <string name="app_home_menu1">●＿¤单细胞</string>
     <string name="app_home_menu2">进阶</string>
     <string name="app_home_menu3">§外星人§</string>
-    <string name="app_go_squaredUp">操作说明：数字对应按钮</string>
+    <string name="app_go_squaredUp">操作说明：数字对应按钮,点击下面任意数字代表0。</string>
     <string name="app_go_equal">=</string>
 </resources>

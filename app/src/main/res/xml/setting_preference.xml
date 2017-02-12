@@ -40,11 +40,34 @@
     <PreferenceCategory android:title="超强记忆">
 
         <EditTextPreference
-            android:dialogTitle="EditTextPreference...dialogTitle"
-            android:key="edittext_preference"
-            android:summary="EditTextPreference..."
-            android:title="EditTextPreference" />
+            android:dialogTitle="设置超时时间（单位/秒）"
+            android:negativeButtonText="取消"
+            android:positiveButtonText="确定"
+            android:key="et_memory_timeout"
+            android:title="设置超时时间（非零,单位/秒）"
+            android:summary="5"
+            android:inputType="number"
+            android:defaultValue="5"/>
 
+        <EditTextPreference
+            android:dialogTitle="记忆数字长度，范围（1-10）"
+            android:negativeButtonText="取消"
+            android:positiveButtonText="确定"
+            android:key="et_memory_length"
+            android:title="记忆数字长度(非零)，范围（1-10）"
+            android:summary="4"
+            android:inputType="number"
+            android:defaultValue="4"/>
+
+        <EditTextPreference
+            android:dialogTitle="设置预览数字时间（单位/秒）"
+            android:negativeButtonText="取消"
+            android:positiveButtonText="确定"
+            android:key="et_memory_preview"
+            android:title="设置预览数字时间（非零,单位/秒）"
+            android:summary="3"
+            android:inputType="number"
+            android:defaultValue="3"/>
     </PreferenceCategory>
 
     <PreferenceCategory android:title="超级反应">

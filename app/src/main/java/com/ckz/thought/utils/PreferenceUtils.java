@@ -60,4 +60,32 @@ public class PreferenceUtils {
         }
         return b;
     }
+
+
+
+
+    public int getMemoryTimeout(){
+        int timeout =5;
+        if(prefs!=null){
+            timeout = Integer.parseInt(prefs.getString("et_memory_timeout","5"));
+        }
+        return timeout;
+    }
+
+
+    public int getMemoryLength(){
+        int number =4;
+        if(prefs!=null){
+            number = Integer.parseInt(prefs.getString("et_memory_length","4"));
+        }
+        return number;
+    }
+
+    public int getMemoryPreviewTime(){
+        int preview =3;
+        if(prefs!=null){
+            preview = Integer.parseInt(prefs.getString("et_memory_preview","3"));
+        }
+        return preview;
+    }
 }
