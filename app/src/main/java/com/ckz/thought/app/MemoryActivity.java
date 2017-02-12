@@ -314,6 +314,7 @@ public class MemoryActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_memory);
+        setTitle("超强记忆");
         setCount = PreferenceUtils.getInstance().getMemoryLength();
         setTimeout = PreferenceUtils.getInstance().getMemoryTimeout();
         countDown = setTimeout;
