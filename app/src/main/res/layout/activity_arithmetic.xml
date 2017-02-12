@@ -12,12 +12,12 @@
         android:orientation="horizontal">
         <TextView
             android:id="@+id/tvFormula"
-            android:layout_width="700px"
+            android:layout_width="850px"
             android:layout_height="220px"
             android:layout_gravity="center_horizontal"
             android:background="@mipmap/tv_dialog"
             android:textColor="@color/app_text_tip"
-            android:textSize="50sp"
+            android:textSize="100px"
             android:clickable="true"
             android:gravity="center"/>
         <com.facebook.drawee.view.SimpleDraweeView
