@@ -5,7 +5,7 @@
         <CheckBoxPreference
             android:key="cb_arithmetic_music"
             android:title="音效"
-            android:checked="true"
+            android:defaultValue="true"
             android:summaryOn="游戏声音(开启)"
             android:summaryOff="游戏声音(关闭)"/>
 
@@ -29,6 +29,11 @@
             android:summary="2"
             android:inputType="number"
             android:defaultValue="2"/>
+        <CheckBoxPreference
+            android:key="cb_arithmetic_serial_timeouts"
+            android:title="是否启动连续超时"
+            android:summaryOn="连续超时(开启)"
+            android:summaryOff="连续超时(关闭)"/>
 
     </PreferenceCategory>
 

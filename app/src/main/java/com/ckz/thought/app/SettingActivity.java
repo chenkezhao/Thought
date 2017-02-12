@@ -43,6 +43,7 @@ public class SettingActivity extends PreferenceActivity {
 
 		// 1 获取超时时间Preference
 		etp_timeout = (EditTextPreference) findPreference("et_arithmetic_timeout");
+		etp_timeout.setSummary(etp_timeout.getText());
 		// 2 设置超时时间Preference变更监听器
 		etp_timeout.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
 
@@ -62,6 +63,7 @@ public class SettingActivity extends PreferenceActivity {
 		});
 		//算术复杂性
 		etp_complexity = (EditTextPreference) findPreference("et_arithmetic_complexity");
+		etp_complexity.setSummary(etp_complexity.getText());
 		etp_complexity.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
 
 			@Override

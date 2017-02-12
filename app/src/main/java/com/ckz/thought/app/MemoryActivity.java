@@ -344,6 +344,8 @@ public class MemoryActivity extends BaseActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+
+        musicUtils.doStop();
     }
 
     /**

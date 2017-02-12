@@ -27,7 +27,7 @@ public class MusicUtils {
      */
     public void doStart(Context context,Integer resid,boolean isLoop){
         try {
-            if(!PreferenceUtils.getInstance().isPlayArithmeticMusic()){
+            if(!PreferenceUtils.getInstance().isPlayMusic()){
                 return;
             }
             //初始化音频资源

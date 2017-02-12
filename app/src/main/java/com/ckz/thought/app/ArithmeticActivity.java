@@ -96,6 +96,8 @@ public class ArithmeticActivity extends BaseActivity{
     //倒计时
     private int countDown = 0;
     private Timer countDownTimer;
+    //是否连续超时
+    private boolean serialTimeouts;
 
     //消息处理机制
     private final Handler myHandler = new Handler() {
@@ -110,7 +112,6 @@ public class ArithmeticActivity extends BaseActivity{
                     score--;
                     app_go_count.setText("次数：" + count);
                     app_go_score.setText("分数："+score);
-                    app_go_timeOut.setText("已超时(倒计时"+setTimeOut+"秒)："+timeOut+" 次");
                     //创建运算公式
                     String formula = createFormula();
                     tvFormula.setText(formula);
@@ -120,6 +121,8 @@ public class ArithmeticActivity extends BaseActivity{
                     shuffleAll();
                     //清空记录结果
                     btnClickResult=null;//设置为null，让垃圾回收机制回收
+                    clearTimeout(false); //Terminate the timer thread
+                    app_go_timeOut.setText("已超时(倒计时"+setTimeOut+"秒)："+timeOut+" 次");
                     break;
                 default:
                     break;
@@ -133,27 +136,20 @@ public class ArithmeticActivity extends BaseActivity{
 
 
     /**
-     * 提醒任务
-     */
-    class RemindTask extends TimerTask{
-        @Override
-        public void run() {
-            clearTimeout(); //Terminate the timer thread
-            Message message = new Message();
-            message.what = TIMEOUT;
-            myHandler.sendMessage(message);
-        }
-
-    }
-
-    /**
      * 设置计时
      * @param seconds
      */
     public void setTimeout(int seconds) {
         if(timer==null){
             timer = new Timer();
-            timer.schedule(new RemindTask(),0, seconds*1000);
+            timer.schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    Message message = new Message();
+                    message.what = TIMEOUT;
+                    myHandler.sendMessage(message);
+                }
+            },seconds * 1000,seconds * 1000);
         }
         //倒计时
         countDown = setTimeOut;
@@ -165,19 +161,24 @@ public class ArithmeticActivity extends BaseActivity{
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            app_go_timeOut.setText("已超时(倒计时"+(countDown--)+"秒)："+timeOut+" 次");
+                            if(timer!=null){
+                                if(serialTimeouts){
+                                    app_go_timeOut.setText("已超时(倒计时"+(countDown--)+"秒)："+timeOut+" 次");
+                                }else{
+                                    app_go_timeOut.setText("已超时(倒计时"+(--countDown)+"秒)："+timeOut+" 次");
+                                }
+                            }
                         }
                     });
                 }
-            }, 0, 1000);
+            }, 1000, 1000);
         }
-
     }
 
     /**
      * 取消计时器任务
      */
-    public void clearTimeout(){
+    public void clearTimeout(boolean isDestroy){
         if(timer!=null){
             timer.cancel();
             timer.purge();
@@ -187,6 +188,11 @@ public class ArithmeticActivity extends BaseActivity{
             countDownTimer.cancel();
             countDownTimer.purge();
             countDownTimer=null;
+        }
+        if(!isDestroy){
+            if(serialTimeouts){
+                setTimeout(setTimeOut);
+            }
         }
     }
 
@@ -338,6 +344,7 @@ public class ArithmeticActivity extends BaseActivity{
         setTitle("趣味口算");
         setTimeOut = PreferenceUtils.getInstance().getArithmeticTimeout();
         number = PreferenceUtils.getInstance().getArithmeticComplexity();
+        serialTimeouts = PreferenceUtils.getInstance().isArithmeticSerialTimeouts();
         res = getResources();
         //activity创建背景音效
         //gameBackMusic();
@@ -598,7 +605,7 @@ public class ArithmeticActivity extends BaseActivity{
         }
         if(rFlag){
             //取消计时器
-            clearTimeout();
+            clearTimeout(false);
             if(message!=null){
                 Toast.makeText(ArithmeticActivity.this, message, Toast.LENGTH_SHORT).show();
             }
@@ -630,7 +637,7 @@ public class ArithmeticActivity extends BaseActivity{
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        clearTimeout();
+        clearTimeout(true);
         //回收bitmap
 //        bitmapUtils.recycleBitmaps(bitmaps);
 

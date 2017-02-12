@@ -30,7 +30,7 @@ public class PreferenceUtils {
     }
 
 
-    public boolean isPlayArithmeticMusic(){
+    public boolean isPlayMusic(){
         boolean isPlay = true;
         if (prefs != null) {
             isPlay = prefs.getBoolean("cb_arithmetic_music", false);
@@ -51,5 +51,13 @@ public class PreferenceUtils {
             number = Integer.parseInt(prefs.getString("et_arithmetic_complexity","1"));
         }
         return number;
+    }
+
+    public boolean isArithmeticSerialTimeouts(){
+        boolean b = true;
+        if (prefs != null) {
+            b = prefs.getBoolean("cb_arithmetic_serial_timeouts", false);
+        }
+        return b;
     }
 }
