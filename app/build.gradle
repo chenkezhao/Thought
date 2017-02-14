@@ -31,4 +31,6 @@ dependencies {
     compile 'com.android.support:design:25.1.0'
     compile 'org.xutils:xutils:3.3.40'
     compile 'com.zhy:autolayout:1.4.5'
+    /*友盟应用统计*/
+    compile 'com.umeng.analytics:analytics:latest.integration'
 }
