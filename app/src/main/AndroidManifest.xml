@@ -3,13 +3,13 @@
     package="com.ckz.thought">
 
 
+    <!--友盟实时统计权限-->
+    <uses-sdk android:minSdkVersion="4"></uses-sdk>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
 
-    <meta-data android:value="58a1be913eae251071001064" android:name="UMENG_APPKEY"/>
-    <!--<meta-data android:value="Channel ID" android:name="UMENG_CHANNEL"/>-->
 
     <application
         android:name=".MyApplication"
@@ -25,6 +25,10 @@
         <meta-data
             android:name="design_height"
             android:value="1920"></meta-data>
+
+
+        <meta-data android:value="58a1be913eae251071001064" android:name="UMENG_APPKEY"/>
+        <meta-data android:value="text1.0" android:name="UMENG_CHANNEL"/>
 
         <activity android:name=".app.MainActivity">
             <intent-filter>
