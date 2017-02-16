@@ -33,4 +33,6 @@ dependencies {
     compile 'com.zhy:autolayout:1.4.5'
     /*友盟应用统计*/
     compile 'com.umeng.analytics:analytics:latest.integration'
+
+    compile 'tyrantgit:explosionfield:1.0.1'
 }
