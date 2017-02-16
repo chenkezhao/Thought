@@ -23,6 +23,8 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Rect;
+import android.os.Handler;
+import android.os.Message;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,7 +37,9 @@ import java.util.Random;
 
 
 public class ExplosionField extends View {
-
+    //集合动画全部结束
+    public static final int LIST_ANIMATIONEND = 1;
+    private static Handler mHandler;
     private List<ExplosionAnimator> mExplosions = new ArrayList<>();
     private int[] mExpandInset = new int[2];
 
@@ -77,6 +81,11 @@ public class ExplosionField extends View {
             @Override
             public void onAnimationEnd(Animator animation) {
                 mExplosions.remove(animation);
+                if(mExplosions.isEmpty()){
+                    Message message = new Message();
+                    message.what = LIST_ANIMATIONEND;
+                    mHandler.sendMessage(message);
+                }
             }
         });
         explosion.setStartDelay(startDelay);
@@ -115,7 +124,8 @@ public class ExplosionField extends View {
         invalidate();
     }
 
-    public static ExplosionField attach2Window(Activity activity) {
+    public static ExplosionField attach2Window(Activity activity,Handler handler) {
+        mHandler = handler;
         ViewGroup rootView = (ViewGroup) activity.findViewById(Window.ID_ANDROID_CONTENT);
         ExplosionField explosionField = new ExplosionField(activity);
         rootView.addView(explosionField, new ViewGroup.LayoutParams(

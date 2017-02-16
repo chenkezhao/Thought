@@ -18,5 +18,15 @@
         fresco:placeholderImage="@mipmap/btn_green"
         fresco:placeholderImageScaleType="fitCenter"
         android:scaleType="fitCenter"/>
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:gravity="center"
+        android:clickable="true"
+        android:layout_width="270px"
+        android:layout_height="270px"
+        android:layout_marginLeft="34px"
+        fresco:actualImageScaleType="fitCenter"
+        fresco:placeholderImage="@mipmap/btn_green"
+        fresco:placeholderImageScaleType="fitCenter"
+        android:scaleType="fitCenter"/>
 
 </com.zhy.autolayout.AutoRelativeLayout>
