@@ -1,12 +1,13 @@
 package com.ckz.thought.app;
 
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.ckz.thought.R;
-
-import tyrantgit.explosionfield.ExplosionField;
+import com.tyrantgit.explosionfield.ExplosionField;
 
 /**
  *
@@ -42,7 +43,23 @@ public class ReactionActivity extends BaseActivity{
         }
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main,menu);
+        return true;
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.main_setting) {
+            View root = findViewById(R.id.rl_root);
+            reset(root);
+            addListener(root);
+            mExplosionField.clear();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
     private void reset(View root) {
         if (root instanceof ViewGroup) {
