@@ -12,7 +12,6 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.ckz.thought.R;
-import com.ckz.thought.utils.MessageUtils;
 
 /**
  *
@@ -25,6 +24,7 @@ public class SettingActivity extends PreferenceActivity {
 	private EditTextPreference etp_mem_timeout;
 	private EditTextPreference etp_mem_lenght;
 	private EditTextPreference etp_mem_preview;
+	private EditTextPreference etp_rea_lenght;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -135,6 +135,32 @@ public class SettingActivity extends PreferenceActivity {
 					return false;
 				}else {
 					etp_mem_preview.setSummary(newValue+"");
+				}
+				return true;
+			}
+		});
+
+
+
+
+		etp_rea_lenght = (EditTextPreference) findPreference("et_reaction_length");
+		etp_rea_lenght.setSummary(etp_rea_lenght.getText());
+		etp_rea_lenght.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+
+			@Override
+			public boolean onPreferenceChange(Preference preference,
+											  Object newValue) {
+				if("0".equals(newValue+"") || "".equals(newValue+"")){
+					Toast.makeText(SettingActivity.this,"不能设置为0或空",Toast.LENGTH_SHORT).show();
+					return false;
+				}else {
+					int len = Integer.parseInt(newValue+"");
+					if(len>0 && len<=9){
+						etp_rea_lenght.setSummary(newValue+"");
+					}else{
+						Toast.makeText(SettingActivity.this,"超出范围（值:1-9）",Toast.LENGTH_SHORT).show();
+						return false;
+					}
 				}
 				return true;
 			}

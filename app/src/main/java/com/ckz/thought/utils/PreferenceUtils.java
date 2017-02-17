@@ -88,4 +88,13 @@ public class PreferenceUtils {
         }
         return preview;
     }
+
+
+    public int getReactionLength(){
+        int number =4;
+        if(prefs!=null){
+            number = Integer.parseInt(prefs.getString("et_reaction_length","4"));
+        }
+        return number;
+    }
 }

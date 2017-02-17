@@ -72,6 +72,17 @@
 
     <PreferenceCategory android:title="超级反应">
 
+
+        <EditTextPreference
+            android:dialogTitle="生成按钮的个数（1-10）"
+            android:negativeButtonText="取消"
+            android:positiveButtonText="确定"
+            android:key="et_reaction_length"
+            android:title="生成按钮的个数（1-9）"
+            android:summary="4"
+            android:inputType="number"
+            android:defaultValue="4"/>
+
         <CheckBoxPreference
             android:key="parent_checkbox_preference"
             android:summary="CheckBoxPreference..."
