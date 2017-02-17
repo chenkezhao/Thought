@@ -74,7 +74,7 @@
 
 
         <EditTextPreference
-            android:dialogTitle="生成按钮的个数（1-10）"
+            android:dialogTitle="生成按钮的个数（1-9）"
             android:negativeButtonText="取消"
             android:positiveButtonText="确定"
             android:key="et_reaction_length"
