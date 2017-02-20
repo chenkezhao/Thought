@@ -84,17 +84,18 @@
             android:defaultValue="4"/>
 
         <CheckBoxPreference
-            android:key="parent_checkbox_preference"
-            android:summary="CheckBoxPreference..."
-            android:title="CheckBoxPreference" />
+            android:key="cb_reaction_bomb_color"
+            android:title="设置炸弹颜色"
+            android:summaryOn="开启"
+            android:summaryOff="关闭"/>
 
         <!-- The visual style of a child is defined by this styled theme attribute. -->
         <CheckBoxPreference
-            android:dependency="parent_checkbox_preference"
+            android:dependency="cb_reaction_bomb_color"
             android:key="child_checkbox_preference"
             android:layout="?android:attr/preferenceLayoutChild"
-            android:summary="CheckBoxPreference..."
-            android:title="CheckBoxPreference" />
+            android:title="CheckBoxPreference"
+            android:summary="待开发..." />
 
     </PreferenceCategory>
 
